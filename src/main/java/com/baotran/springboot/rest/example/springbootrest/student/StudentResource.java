@@ -2,11 +2,14 @@ package com.baotran.springboot.rest.example.springbootrest.student;
 
 import com.baotran.springboot.rest.example.springbootrest.common.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +17,9 @@ import java.util.Optional;
 public class StudentResource {
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @GetMapping("/students")
     public List<Student> retrieveAllStudents() {
@@ -58,5 +64,21 @@ public class StudentResource {
         studentRepository.save(student);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/template/students")
+    public List<Student> getProductList() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
+
+        List<Student> students =  restTemplate.exchange(
+                "http://localhost:9090/students",
+                HttpMethod.GET,
+                entity,
+                new ParameterizedTypeReference<List<Student>>() {}
+        ).getBody();
+
+        return students;
     }
 }
