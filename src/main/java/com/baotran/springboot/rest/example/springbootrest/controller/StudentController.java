@@ -1,6 +1,8 @@
-package com.baotran.springboot.rest.example.springbootrest.student;
+package com.baotran.springboot.rest.example.springbootrest.controller;
 
 import com.baotran.springboot.rest.example.springbootrest.common.exceptions.NotFoundException;
+import com.baotran.springboot.rest.example.springbootrest.model.Student;
+import com.baotran.springboot.rest.example.springbootrest.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class StudentResource {
+public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
 
@@ -31,7 +33,7 @@ public class StudentResource {
         Optional<Student> student = studentRepository.findById(id);
 
         if (!student.isPresent())
-            throw new StudentNotFoundException("id-" + id);
+            throw new NotFoundException("Student id-" + id + " not found.");
 
         return student.get();
     }
@@ -57,7 +59,7 @@ public class StudentResource {
         Optional<Student> studentOptional = studentRepository.findById(id);
 
         if (!studentOptional.isPresent())
-            throw new NotFoundException();
+            throw new NotFoundException("Student id-" + id + " not found.");
 
         student.setId(id);
 

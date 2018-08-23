@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionController {
     @ExceptionHandler(value = NotFoundException.class)
     public ResponseEntity<Object> exception(NotFoundException exception) {
-        return new ResponseEntity<>("Resource not found", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

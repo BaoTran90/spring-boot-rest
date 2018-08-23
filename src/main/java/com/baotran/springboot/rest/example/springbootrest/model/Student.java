@@ -1,4 +1,4 @@
-package com.baotran.springboot.rest.example.springbootrest.student;
+package com.baotran.springboot.rest.example.springbootrest.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
