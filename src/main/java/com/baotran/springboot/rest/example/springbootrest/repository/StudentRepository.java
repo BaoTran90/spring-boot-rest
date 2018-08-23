@@ -1,5 +1,6 @@
-package com.baotran.springboot.rest.example.springbootrest.student;
+package com.baotran.springboot.rest.example.springbootrest.repository;
 
+import com.baotran.springboot.rest.example.springbootrest.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
