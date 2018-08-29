@@ -38,4 +38,18 @@ public class Student {
     public void setPassportNumber(String passportNumber) {
         this.passportNumber = passportNumber;
     }
+
+    public Student() {}
+
+    public Student(String name, String passportNumber) {
+        this.name = name;
+        this.passportNumber = passportNumber;
+    }
+
+    public Student(Long id, String name, String passportNumber) {
+        this.id = id;
+        this.name = name;
+        this.passportNumber = passportNumber;
+    }
+
 }
