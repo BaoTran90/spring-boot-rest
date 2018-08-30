@@ -55,13 +55,13 @@ public class StudentController {
     }
 
     @GetMapping(value = "/template/students")
-    public List<Student> getProductList() {
+    public List<Student> getStudentsTemplate() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<String>(headers);
 
         List<Student> students =  restTemplate.exchange(
-                "http://localhost:9090/students",
+                "http://localhost:8080/students",
                 HttpMethod.GET,
                 entity,
                 new ParameterizedTypeReference<List<Student>>() {}
