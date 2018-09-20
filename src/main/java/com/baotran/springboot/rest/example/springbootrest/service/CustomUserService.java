@@ -22,7 +22,7 @@ public class CustomUserService implements UserDetailsService {
             return customUser;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new UsernameNotFoundException("User " + username + " was not found in the database");
+            throw new UsernameNotFoundException("Users " + username + " was not found in the database");
         }
     }
 }
