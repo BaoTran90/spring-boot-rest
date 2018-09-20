@@ -20,7 +20,7 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
     private String clientid = "abc@gmail.com";
     // for spring boot 2, secret must be hashed using bcrypt
-    private String clientSecret = "$2a$08$fL7u5xcvsZl78su29x1ti.dxI.9rYO8t0q5wk2ROJ.1cdR53bmaVG";
+    private String clientSecret = "$2a$10$8feu3or4rmVBOp3/V7Qo/OoTWrtcU5dTRULs/Lmk2VBEXWqoTVFaG";
 
     @Autowired
     @Qualifier("authenticationManagerBean")
